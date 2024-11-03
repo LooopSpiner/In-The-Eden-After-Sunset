@@ -4,6 +4,11 @@
 ## 添加内容
 
 添加了一些拓展剧情、两张地图、若干pc与伊甸互动的动画（以及奇怪的收音机）。
+<details><summary><b>展开查看图片</b></summary>
+ 
+![image](https://github.com/LooopSpiner/In-The-Eden-After-Sunset/blob/main/images_in_md/1.gif)
+![image](https://github.com/LooopSpiner/In-The-Eden-After-Sunset/blob/main/images_in_md/2.png)
+</details>
 
 ### 使用方法
 
@@ -72,6 +77,21 @@
 老存档可能会出现伊甸受伤贴图错误显示的问题，如果在安装mod前经历过伊甸受伤事件，用言灵 [[救一下啊|$passage][$eden_hurt = 1]] 补救，或点击进入小屋，会自动给这个变量赋值以修复bug
 
 4.0等老版本不推荐使用，会出现很多兼容性问题，如果你执意要用4.0的游戏版本运行这个mod，需要把twee文件中关于weather的判别语句全部删除。
+<details><summary><b>代码示例</b></summary>
+ <br>
+ 查找eden_indoor_map.twee文件中的以下代码，并把他们删除（一共四处，全部删除）
+ 
+ ```diff
+&& Weather.dayState == "night" && (Weather.precipitation == "rain" || Weather.name == "thunderStorm") && V.weekly.edenStory)
+ ```
+<br>
+查找eden_cabin_map.twee文件中的以下代码，并把他们删除（从图1框选的部分一直到图2全部删除，不要动其他部分）
+
+![image](https://github.com/LooopSpiner/In-The-Eden-After-Sunset/blob/main/images_in_md/4.png)
+![image](https://github.com/LooopSpiner/In-The-Eden-After-Sunset/blob/main/images_in_md/3.png)
+<br>
+<b>警告：如果你在游玩4.0版本的游戏，且不愿意更新版本，请按照上文修改代码，不要删除额外的代码！这样做可能会导致人物错误显示和室外天气特效被删除，请知晓你在做什么。</b>
+</details>
 
 # ENG VERSHION
 This is a mod loaded using ModLoader that depends on the Simple Frameworks mod. 
