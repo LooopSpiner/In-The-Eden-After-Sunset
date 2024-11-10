@@ -548,12 +548,18 @@ if (V.passage == "Eden Cabin Bed" && V.bedGuest !== "Eden") {
 		var lil_pc_hair_color = getColor(setup.colours.hair, V.haircolour);
 		if(V.makeup.eyelenses.right != 0){
 			var lil_pc_righteye_color = getSpecialColor(tinycolor.names, V.makeup.eyelenses.right);
+      if (lil_pc_righteye_color == "#undefined"){
+        lil_pc_righteye_color = getColor(setup.colours.eyes, V.makeup.eyelenses.right);
+      }
 		}
 		else{
 			var lil_pc_righteye_color = getColor(setup.colours.eyes, V.rightEyeColour);
 		}
 		if(V.makeup.eyelenses.left != 0){
 			var lil_pc_lefteye_color = getSpecialColor(tinycolor.names, V.makeup.eyelenses.left);
+      if(lil_pc_lefteye_color == "#undefined"){
+        lil_pc_lefteye_color = getColor(setup.colours.eyes, V.makeup.eyelenses.left);
+      }
 		}
 		else{
 			var lil_pc_lefteye_color = getColor(setup.colours.eyes, V.leftEyeColour);

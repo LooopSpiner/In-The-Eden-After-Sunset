@@ -6,6 +6,7 @@
     padding: 0;
     overflow: hidden;
     image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }
 
 #edenmap {

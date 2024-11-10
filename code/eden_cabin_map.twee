@@ -279,7 +279,7 @@ else if (V.passage == "Eden Lunch") {
     pc_width = 28;
     lil_pc_div_img.style.width = "28px";
     lil_eden_div_img.style.zIndex = "0";
-    setPCandEdenPosition("lunch" + V.daily.eden_lunch, 18, 27, "lunch", 0, 23);
+    setPCandEdenPosition("lunch" + V.daily.eden_lunch, 18, 27, "lunch", 1, 23);
 }
 else if (V.passage == "Clearing Weeding" && V.danger >= (9900 - V.allure) && ((Time.hour > 6 && Time.hour < 11) || Time.hour > 14) && !(V.rng >= 51 && V.tentacledisable == "f" && (V.hallucinations >= 2 || V.backgroundTraits.includes("plantlover")))) {
     setPCandEdenPosition("front", 218, 40, "breakfast_lust", 230, 33);
@@ -288,7 +288,7 @@ else if (Time.hour >= 9 && Time.hour <= 10) {
     setPCandEdenPosition(null, null, null, "water", 225, 38);
 }
 else if (Time.hour == 15 && !(V.rng >= 91 && !V.edenhurt)) {
-    setPCandEdenPosition(null, null, null, "peel", 0, 23);
+    setPCandEdenPosition(null, null, null, "peel", 1, 23);
 }
 else if (Time.hour == 16) {
     setPCandEdenPosition(null, null, null, "axe", 93, 75);
@@ -332,12 +332,18 @@ lil_eden_div_img.style.setProperty("--lil_eden_y", lil_eden_y);
 		var lil_pc_hair_color = getColor(setup.colours.hair, V.haircolour);
 		if(V.makeup.eyelenses.right != 0){
 			var lil_pc_righteye_color = getSpecialColor(tinycolor.names, V.makeup.eyelenses.right);
+      if (lil_pc_righteye_color == "#undefined"){
+        lil_pc_righteye_color = getColor(setup.colours.eyes, V.makeup.eyelenses.right);
+      }
 		}
 		else{
 			var lil_pc_righteye_color = getColor(setup.colours.eyes, V.rightEyeColour);
 		}
 		if(V.makeup.eyelenses.left != 0){
 			var lil_pc_lefteye_color = getSpecialColor(tinycolor.names, V.makeup.eyelenses.left);
+      if(lil_pc_lefteye_color == "#undefined"){
+        lil_pc_lefteye_color = getColor(setup.colours.eyes, V.makeup.eyelenses.left);
+      }
 		}
 		else{
 			var lil_pc_lefteye_color = getColor(setup.colours.eyes, V.leftEyeColour);
