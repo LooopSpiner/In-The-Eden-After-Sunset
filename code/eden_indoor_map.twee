@@ -368,7 +368,7 @@ else if(V.cage_passages.includes(V.passage)){
         setPCandEdenPosition(null,null,null,"sleep", 182, 13);
         apply_effect("sleep_effect", "img/misc/lil_eden/zzz.gif", 205, -2, eden_div[0]);
     }
-    else if((Time.hour <= 8 && V.passage == "Eden Caged")||(V.edenCaged.days >= 1 && Time.hour > 16 && Time.hour < 18)||(V.passage == "Eden Caged Evening" && V.phase == 1) || ((C.npc.Eden.trust >= 100 || V.edenCaged.days >= 5)&&Time.hour <= 8 && Time.hour >= 6)){
+    else if((Time.hour <= 8 && V.passage == "Eden Caged")||(V.passage == 'Eden Caged Caught' || V.passage == "Eden Caged Intro")||(V.edenCaged.days >= 1 && Time.hour > 16 && Time.hour < 18)||(V.passage == "Eden Caged Evening" && V.phase == 1) || ((C.npc.Eden.trust >= 100 || V.edenCaged.days >= 5)&&Time.hour <= 8 && Time.hour >= 6)){
         setPCandEdenPosition("left", null,null,"squat", 120, 40);
     }
     else if(V.passage == "Eden Caged Escape" || V.passage == "Eden Caged Freedom"){
@@ -514,7 +514,7 @@ if (V.passage == "Eden Cabin Bed" && V.bedGuest !== "Eden") {
     var cage_div = document.createElement("div");
     cage_div.style.position = "absolute";
     var cage_img = document.createElement("img");
-    if((eden_direction == "squat" && !(V.passage == "Eden Caged Evening" && V.phase == 1))||V.passage == "Eden Caged Escape"||V.passage == "Eden Caged Freedom"){
+    if((eden_direction == "squat" && !V.passage == 'Eden Caged Caught' && (!(V.passage == "Eden Caged Evening" && V.phase == 1))||V.passage == "Eden Caged Escape"||V.passage == "Eden Caged Freedom")){
         var cage_src = "img/misc/cage_open.png";
         }
     else{

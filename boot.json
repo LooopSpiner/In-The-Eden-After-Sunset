@@ -1,6 +1,6 @@
 {
     "name": "日落伊甸园", 
-    "version": "1.0.6", 
+    "version": "1.0.7", 
     "scriptFileList_inject_early": [],
     "scriptFileList_earlyload": [
     ],
@@ -362,7 +362,7 @@
           {
             "passage": "Cabin House Actions",
             "findString": "<</if>>\n<br>\n<<furnitureicon",
-            "replace": "<</if>>\n<br><<edenicon 'radio'>><<link[[用收音机听音乐 (0:10)|Eden Radio]]>><<endevent>><<pass 10>><<stress -3>><</link>><<lstress>><br><br>\n<<furnitureicon",
+            "replace": "<</if>>\n<br><<if $edenradiointro is 2>><<edenicon 'radio'>><<link[[用收音机听音乐 (0:10)|Eden Radio]]>><<endevent>><<pass 10>><<stress -3>><</link>><<lstress>><br><br>\n<</if>><<furnitureicon",
             "_comment1": "伊甸小屋添加收音机入口"
           },
           {

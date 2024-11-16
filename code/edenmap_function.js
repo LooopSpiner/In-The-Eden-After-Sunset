@@ -168,9 +168,9 @@ window.resolveClothColor = function resolveClothColor(wornItem) {
         var pc_cloth_hsv = wornItem.colourCustom.match(/\d+(\.\d+)?/g);
         return HSVtoRGB(pc_cloth_hsv[0], pc_cloth_hsv[1] * 78.125, pc_cloth_hsv[2] * 50);
     } 
-    else if (wornItem.colour !== 0) {
+    else if (wornItem.colour && wornItem.colour !== "primary") {
         return getColor(setup.colours.clothes, wornItem.colour);
-    } else if (wornItem.colour == 0 && !wornItem.type.includes("naked") && wornItem.colour_combat !== 0) {
+    } else if (!wornItem.colour && !wornItem.type.includes("naked") && wornItem.colour_combat ) {
         return getColor(setup.colours.clothes, wornItem.colour_combat);
     } else {
 		return getColor(setup.colours.clothes, "black");
