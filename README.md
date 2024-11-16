@@ -94,6 +94,16 @@
 </details>
 
 # ENG VERSHION
+
+Thanks to Reibies for helping me translate the English readme <3
+
+In particular, non-Chinese users do not need to install the i18n mod (this mod is used to translate dol's in-game text into Chinese), only the simple framework as the front mod.
+
+[**English README**](https://github.com/Reibies/In-The-Eden-After-Sunset/blob/main/README_EN.md)
+
+<br><br>
+**This is the original readme**
+
 This is a mod loaded using ModLoader that depends on the Simple Frameworks mod. 
 
 If you wish to use this mod, please install [**Simple Frameworks**](https://github.com/emicoto/DOLMods/) first. 
