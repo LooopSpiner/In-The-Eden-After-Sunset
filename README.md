@@ -45,6 +45,8 @@
 
 2024/11/2 v1.0.3 修复了缩放导致人物和地图错位的bug
 
+2024/11/16 v1.0.7 修复了当衣服染色为"primary"色的时候，报错的bug
+
 ### 特别感谢
 
 帮助过我的modder们：
@@ -76,6 +78,8 @@
 
 老存档可能会出现伊甸受伤贴图错误显示的问题，如果在安装mod前经历过伊甸受伤事件，用言灵 [[救一下啊|$passage][$eden_hurt = 1]] 补救，或点击进入小屋，会自动给这个变量赋值以修复bug
 
+使用safari浏览器且为ios高版本的时候，人物的发色、衣服颜色渲染将出现错误，修不来
+
 4.0等老版本不推荐使用，会出现很多兼容性问题，如果你执意要用4.0的游戏版本运行这个mod，需要把twee文件中关于weather的判别语句全部删除。
 <details><summary><b>代码示例</b></summary>
  <br>
@@ -94,6 +98,16 @@
 </details>
 
 # ENG VERSHION
+
+Thanks to Reibies for helping me translate the English readme <3
+
+In particular, non-Chinese users do not need to install the i18n mod (this mod is used to translate dol's in-game text into Chinese), only the simple framework as the front mod.
+
+[**English README**](https://github.com/Reibies/In-The-Eden-After-Sunset/blob/main/README_EN.md)
+
+<br><br>
+**This is the original readme**
+
 This is a mod loaded using ModLoader that depends on the Simple Frameworks mod. 
 
 If you wish to use this mod, please install [**Simple Frameworks**](https://github.com/emicoto/DOLMods/) first. 
