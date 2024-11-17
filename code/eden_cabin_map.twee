@@ -544,6 +544,7 @@ const awaitSendText = async (txt, fontSize, stepV) => {
 };
 cvs.style.position = "absolute";
 cvs.style.pointerEvents = "none";
+cvs.style.zIndex = "100";
 eden_div[0].appendChild(cvs);
 	}
 	else if(Weather.name == "thunderStorm" || Weather.name == "heavyPrecipitation"){
@@ -776,6 +777,7 @@ $(document).ready(function() {
   rain_canvas.height = 128;
   rain_canvas.style.position = "absolute";
   rain_canvas.style.pointerEvents = "none";
+  rain_canvas.style.zIndex = "100";
   eden_div[0].appendChild(rain_canvas);
   
   if(rain_canvas.getContext) {

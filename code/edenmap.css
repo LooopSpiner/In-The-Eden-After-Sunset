@@ -107,49 +107,74 @@
     pointer-events: none;
 }
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .pc_img_hair_color_cover {
-    transform: translateX(-100%);
-    filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_hair_color));
-    z-index: 19;
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_hair_color));
+            filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_hair_color));
+    z-index: 21;
     mix-blend-mode: overlay;
     position: absolute;
 }
 
 .pc_img_lefteye_color_cover {
-    transform: translateX(-100%);
-    filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_lefteye_color));
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_lefteye_color));
+            filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_lefteye_color));
     z-index: 17;
     mix-blend-mode: overlay;
     position: absolute;
 }
 
 .pc_img_righteye_color_cover {
-    transform: translateX(-100%);
-    filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_righteye_color));
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_righteye_color));
+            filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_righteye_color));
     z-index: 17;
     mix-blend-mode: overlay;
     position: absolute;
 }
 
 .pc_img_shirt_color_cover {
-    transform: translateX(-100%);
-    filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_shirt_color));
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_shirt_color));
+            filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_shirt_color));
     z-index: 19;
     mix-blend-mode: overlay;
     position: absolute;
 }
 
 .pc_img_shoes_color_cover {
-    transform: translateX(-100%);
-    filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_shoes_color));
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_shoes_color));
+            filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_shoes_color));
     z-index: 17;
     mix-blend-mode: overlay;
     position: absolute;
 }
 
 .pc_img_shorts_color_cover {
-    transform: translateX(-100%);
-    filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_shorts_color));
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_shorts_color));
+            filter: drop-shadow(calc(var(--pc_width)*1px) 0 var(--pc_img_shorts_color));
     z-index: 18;
     mix-blend-mode: overlay;
     position: absolute;
@@ -192,8 +217,7 @@
 
 .pc_img_hair{
     position: absolute;
-    z-index: 18;
-    isolation: isolate;
+    z-index: 20;
 }
 
 .pc_div{
@@ -204,6 +228,7 @@
     overflow: hidden;
     margin: 0;
     padding: 0;
+    mix-blend-mode: normal;
 }
 
 .pc_night{
@@ -280,8 +305,7 @@
     width: 256px;
     height: 128px;
     position: absolute;
-    z-index: 0;
-    transform: translateX(2px);
+    z-index: 100;
     pointer-events: none;
   }
   .stormDiv:after {
