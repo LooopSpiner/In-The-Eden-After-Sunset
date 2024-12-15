@@ -67,8 +67,9 @@
    * 贡献收音机passage内新歌曲和文本的玩家们！
    * 还有正在游玩这款模组的你！
    * 你们是最好的！^^
+
+~~支持喵~大家快来支持 Imperial Circus Dead Decadence 乐队喵！~~
   
-     
 ### 目前已知bug
 
 ```diff
