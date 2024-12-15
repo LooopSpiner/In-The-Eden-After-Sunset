@@ -68,7 +68,7 @@
         <<set $daily.eden_pet_head to 1>>
         <<link [[继续|Clearing Eden Actions]]>><</link>>
     <<else>>
-        “过来。”伊甸挑眉，没等你思考，他便抓着你的牵引绳强迫你靠近，力道大到你摔到了<<he>>脚边。<<ggpain>><<pain +5>>
+        “过来。”伊甸挑眉，没等你思考，<<he>>便抓着你的牵引绳强迫你靠近，力道大到你摔到了<<he>>脚边。<<ggpain>><<pain +5>>
         <<link [[继续|Eden Wolf Pet Content]]>><</link>>
     <</if>>
     
@@ -178,7 +178,7 @@
 :: Eden Wolf Game Refuse
 
     <<print speechDif(
-        "“你把我当什么了？你的猎犬？？”你反驳道，双手叉腰<<if $transformationParts.wolf.tail isnot "hidden" || $transformationParts.fox.tail isnot "hidden">><<if $transformationParts.fox.tail isnot "disabled" || $transformationParts.wolf.tail isnot "disabled">>，试图去掩饰你那因为激动而摇摆的尾巴<</if>><</if>>。",
+        "“你把我当什么了？你的猎犬？？”你反驳道，双手叉腰<<if $transformationParts.wolf.tail isnot 'hidden' || $transformationParts.fox.tail isnot 'hidden'>><<if $transformationParts.fox.tail isnot 'disabled' || $transformationParts.wolf.tail isnot 'disabled'>>，试图去掩饰你那因为激动而摇摆的尾巴<</if>><</if>>。",
         "“什么？”你皱眉，站在原地看着伊甸。“我不想这样。”即使你的本能促使你去答应，但理性更胜一筹。你摇摇头。",
         "“……？？！”你歪着头看着伊甸，“我……我不想玩这个……伊甸。”你低下头去，声音很小。",
     )>>
@@ -189,7 +189,7 @@
 
 :: Eden Wolf Crash 1
 
-    你在小屋的空地上。看到伊甸从小屋里出来，<<he>>走到你附近并伸了个懒腰。他<<he>>看起来放松了警惕。<br>
+    你在小屋的空地上。看到伊甸从小屋里出来，<<he>>走到你附近并伸了个懒腰。<<he>>看起来放松了警惕。<br>
     你有了一个想法。<br><br>
     
     <<link [[实施它|Eden Wolf Crash 2]] >><</link>>
@@ -230,7 +230,7 @@
     “你这只坏狗狗。”<<he>>皱着眉看着你胡作非为。<br>当<<he>>想要阻止你的时候，你用更大的力气摁住<<he>>。<br>
     看起来<<he>>没有别的选择了。你舔舔嘴唇，欣赏着<<he>>在你身下的狼狈样子。<<arousal 1800>><<ggarousal>><br>
     “看够了吗？”伊甸有点恼怒，<<he>>并不习惯被压在身下的感觉。<br>
-    你摇了摇头，俯身啃咬着他的脖颈，流下口水和深深浅浅的牙印。<br>
+    你摇了摇头，俯身啃咬着<<he>>的脖颈，流下口水和深深浅浅的牙印。<br>
     听见<<he>>止不住的低喘，你感到很爽。<<llstress>><<stress -8>><br><br>
     “下次你如果再这样，我会惩罚你。”伊甸忍无可忍把你反扑在地上，但看到你无辜的狗狗眼之后还是叹了口气放过了你。<br>
     <<he>>整理了一下衣襟便站起身去工作了。<br><br>
@@ -250,7 +250,7 @@
     
 :: Eden Wolf Crash Give Up
 
-    你挠了挠头，看着伊甸放松完之后便去做他的日常工作。短暂的休息让他精神了不少。<<llstress>><<stress -7>><br><br>
+    你挠了挠头，看着伊甸放松完之后便去做<<he>>的日常工作。短暂的休息让<<he>>精神了不少。<<llstress>><<stress -7>><br><br>
     <<link [[继续|Eden Clearing]]>><</link>>
 
 :: Eden Water Fight
@@ -326,12 +326,12 @@ V.animalEarCheck = earConditions.some(condition => condition);
 <!--李在赣神魔？ -->
 
 <<if $speech_attitude is "bratty" >>
-    你迅速翻坐起来。“我，我才没有……你看我做什么？没点正事？”你勉强与他/她对上视线，脸上的潮红早已出卖了你，可你仍然皱着眉表示反抗。<br>
+    你迅速翻坐起来。“我，我才没有……你看我做什么？没点正事？”你勉强与<<he>>对上视线，脸上的潮红早已出卖了你，可你仍然皱着眉表示反抗。<br>
 
     <<if $cow gte 2 and $transformationParts.cow.horns isnot "hidden">>
         你晃了晃你的头，向<<he>>表示你的角并不好对付。
     <<elseif $animalEarCheck and $animalTailCheck>>
-        你的耳朵向后倾并且炸毛，向他/她发出警告的低吼声。尾巴不安地大幅度摆动。你露出你的犬齿表示威胁。
+        你的耳朵向后倾并且炸毛，向<<he>>发出警告的低吼声。尾巴不安地大幅度摆动。你露出你的犬齿表示威胁。
     <<elseif $harpy gte 4>>
         你用锐利的目光盯着<<he>>。
     <</if>>
@@ -454,7 +454,7 @@ V.animalEarCheck = earConditions.some(condition => condition);
 伊甸的手仍然搭在你肩膀上。<<he>>的呼吸有点慌乱，貌似期待着你的评价。<br><br>
 
 <<link [[给予好评|Eden Figure 2]]>><<set $daily.eden_figure to 1>><</link>><br>
-<<link [[趁此机会怼他一句|Eden Figure 2]]>><<set $daily.eden_figure to 2>><</link>>
+<<link [[趁此机会怼<<he>>一句|Eden Figure 2]]>><<set $daily.eden_figure to 2>><</link>>
 
 :: Eden Figure 2
 

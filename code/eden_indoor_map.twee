@@ -2,6 +2,8 @@
 
 <<widget "Eden_Indoor_Map_Actions">>
 	<script>
+        var night_img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAACACAYAAADktbcKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACNklEQVR4nO3dQUoDQRBAUSNe3rXX8I5x5UYQFDJdRf576yx6oPgZqIa5fX6831+ApLfpAzyXny29Pfj38FiLA/AMLyb/fYZneGb+bj74r9MHAOYsDYB/Qgrm53xpAIATBADCBADCBADClgZgfj0C15uf86UBAE4QAAhbGoD5/Shcb37OlwYAOEEAIEwAIEwAIGxpAOb3o3C9+TlfGgDgBAGAsKUBmN+PwvXm53xpAIATBADCBADCBADClgZgfj8K15uf86UBAE4QAAhbGoD5/Shcb37OlwYAOEEAIEwAIEwAIGxpAOb3o3C9+TlfGgDgBAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAsKUBuE8fABKWBgA4QQAgTAAgTAAgbGkAbtMHgISlAQBOEAAIWxoA9wDghKUBAE4QAAgTAAgTAAhbGgD3AOCEpQEAThAACFsaAPcA4ISlAQBOEAAIEwAIEwAIWxoA9wDghKUBAE4QAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAh7mz7A776/EHwfPQU83p6vX38BDuQUzDceDEEAAAAASUVORK5CYII=";
+
 		var eden_night_opacity_night = (1-((1230 - (Time.hour*60+Time.minute))/90));
 		var eden_night_opacity_morning = ((480-(Time.hour*60+Time.minute))/120);
 		function edenmapMove(moveTo) {
@@ -108,8 +110,9 @@
     <<set $breakfast_passages to ["Eden Breakfast","Eden Breakfast 2"]>>
     <<set $cage_passages to ["Eden Caged Intro","Eden Caged","Eden Caged Caught","Eden Caged Evening","Eden Caged Breakfast","Eden Caged Escape","Eden Caged Freedom"]>>
     <<set $wound_passages to ['Eden Wounds','Eden Wounds Insist','Eden Wounds Finish']>>
+    <<run V.terrariaModCheck = window.modUtils.getModListName().includes("Terraria Expand Mod");>>
 
-	<<if $options.images is 1>>
+	<<if $options.images is 1 and !$options.mapLegacy>>
 		<<set _EdenBoxLocation to [
             { x:100,y:105}, /*小屋门口*/
             {x:121,y:9},/*镜子*/
@@ -168,7 +171,7 @@
 
         <</if>>
         <<if $daily.eden.soap isnot 1>>
-            <<set _EdenBoxLocation.push({x:58,y:5},/*肥皂*/)>>
+            <<set _EdenBoxLocation.push({x:58,y:18},/*肥皂*/)>>
         <</if>>
         <<if $daily.eden.sweep isnot 1>>
                 <<set _EdenBoxLocation.push({x:106, y:20},/*扫地*/)>>
@@ -226,6 +229,41 @@
     <<if $daily.eden.sew isnot 1 or $edencushions is 1 or $edendesign lt 9 or (Time.season is "winter" and !$edenscarf and $edencoat is 2)>>
         <img  src="img/misc/indoor/sew.png" class="edenmapitem" />
     <</if>>
+
+    <<if ($terrariaModCheck && $pylon_collected.includes("Eden Cabin") && $pylon_museum_asked) && (Time.hour lt 11 || Time.hour gt 14)>>
+        <<set $edenmap.edenarrayList.push("Pylon Transport")>>
+        <<set _EdenBoxLocation.push({x:180,y:98},)>>
+    <</if>>
+
+    <script>
+    if (V.terrariaModCheck){
+        var eden_div_for_pylon = document.getElementsByClassName("divedenmap");
+        var pylon_img = document.createElement("img");
+        var pylon_div = document.createElement("div");
+        var pylon_img_src;
+        if (V.pylon_collected.includes("Eden Cabin") && V.pylon_museum_asked){
+                pylon_img_src="img/misc/indoor/pylon.gif";
+        }
+        else{
+            pylon_img_src="img/misc/indoor/pylon_base.png";
+        }
+            
+        pylon_img.src = pylon_img_src;
+        pylon_div.style.position = "absolute";
+        pylon_div.setAttribute("class", "sleep_effect");
+        pylon_div.appendChild(pylon_img);
+        pylon_div.style.zIndex = "3";
+        pylon_div.style.pointerEvents = "none";
+
+        var pylon_night = document.createElement("img");
+        pylon_night.src = night_img;
+        pylon_night.setAttribute("class", "pc_night");
+        window.modSC2DataManager.getHtmlTagSrcHook().requestImageBySrc(pylon_img_src).then(base64Img => {
+            applyNightMask(pylon_night, base64Img, pylon_div);
+        });
+        eden_div_for_pylon[0].appendChild(pylon_div);
+    }
+    </script>
 
     <<if Time.hour gte 18 and Time.hour lte 19 and Time.monthDay is 25 and $christmas_gift_eden_given is 1>>
         <img  src="img/misc/indoor/food/xmas.png" class="edenmapfurniture" />
@@ -285,7 +323,7 @@
        @alt="$edenmap.edenarrayList[_i] + (_canMoveTo ? ' (0:00)' : '')"
        @title="$edenmap.edenarrayList[_i] + (_canMoveTo ? ' (0:00)' : '')">
        
-        <div @style="'position: absolute;
+        <div class = "link_div" @style="'position: absolute;
                     left: ' + _EdenBoxLocation[_i].x + 'px;
                     top: ' + _EdenBoxLocation[_i].y + 'px;
                     width: 30px;
@@ -294,19 +332,49 @@
                     opacity: '+ (_showMarker ? '0.6' : '0') +';
                     background-color: transparent;'">
         </div>
+        
     </a>
 <</for>>
+<script>
+        var linkDivs = document.getElementsByClassName("link_div");
+
+function changeDivWidthAndHeight(element, divWidth, divHeight) {
+    element.style.width = divWidth + "px";
+    element.style.height = divHeight + "px";
+}
+
+var dimensionsMap = {
+    "Eden Mirror": [19, 24],
+    "Eden Wardrobe": [24, 27],
+    "Eden Radio": [15, 17],
+    "Eden Salve": [16, 10],
+    "Eden Soap": [16, 10],
+    "Eden Massage": [16, 10],
+    "Eden Sweep": [18, 24],
+    "Eden Stock": [22, 17],
+    "Eden Fix": [8, 20],
+    "Eden Dance": [15, 17],
+};
+
+for (let i = 0; i < linkDivs.length; i++) {
+    var currentDiv = linkDivs[i];
+    var targetKey = V.edenmap.edenarrayList[i];
+    var dimensions = dimensionsMap[targetKey];
+    if (dimensions) {
+        changeDivWidthAndHeight(currentDiv, dimensions[0], dimensions[1]);
+    }
+}
+
+        </script>
 		</div>
 		</div>
 	<</if>>
 
     <!--js部分，前面的史山也太大坨了吧！我好想优化它。。。-->
-    <<if $options.images is 1 and $options.mapLegacy isnot true>>
+    <<if $options.images is 1 and !$options.mapLegacy>>
 	<script>
 
         window.modImgLoaderHooker.addDynamicImageTagReplacePassage(V.passage);
-
-        var night_img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAACACAYAAADktbcKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAACNklEQVR4nO3dQUoDQRBAUSNe3rXX8I5x5UYQFDJdRf576yx6oPgZqIa5fX6831+ApLfpAzyXny29Pfj38FiLA/AMLyb/fYZneGb+bj74r9MHAOYsDYB/Qgrm53xpAIATBADCBADCBADClgZgfj0C15uf86UBAE4QAAhbGoD5/Shcb37OlwYAOEEAIEwAIEwAIGxpAOb3o3C9+TlfGgDgBAGAsKUBmN+PwvXm53xpAIATBADCBADCBADClgZgfj8K15uf86UBAE4QAAhbGoD5/Shcb37OlwYAOEEAIEwAIEwAIGxpAOb3o3C9+TlfGgDgBAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAsKUBuE8fABKWBgA4QQAgTAAgTAAgbGkAbtMHgISlAQBOEAAIWxoA9wDghKUBAE4QAAgTAAgTAAhbGgD3AOCEpQEAThAACFsaAPcA4ISlAQBOEAAIEwAIEwAIWxoA9wDghKUBAE4QAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAgTAAh7mz7A776/EHwfPQU83p6vX38BDuQUzDceDEEAAAAASUVORK5CYII=";
 
 		var eden_div = document.getElementsByClassName("divedenmap");
 		var lil_pc_div_img = document.createElement("div");

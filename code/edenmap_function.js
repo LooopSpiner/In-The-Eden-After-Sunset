@@ -148,13 +148,11 @@ window.HSVtoRGB = function HSVtoRGB(h, s, v) {
 
 //获取头发颜色和眼睛颜色
 window.getColor = function getColor(part, colour){
-    var lil_pc_i;
     for(var i = 0;i < part.length;i ++){
         if(part[i].variable == colour){
-            lil_pc_i = i;
+            var result = part[i].canvasfilter.blend;
         };
     }
-    var result = part[lil_pc_i].canvasfilter.blend;
     return result;
 };
 window.getSpecialColor = function getSpecialColor(part, colour){

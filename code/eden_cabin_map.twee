@@ -50,6 +50,8 @@
       "Eden Shoot":[],
       "Eden Shoot First Focus":[],
       "Eden Shoot Focus":[],
+      "Fishing":[],
+      "Fishing Bitten":[],
 		},
 		"edenarrayList": ["Eden Cabin","Eden Porch","Eden Plots","Eden Clearing"]
 	}>>
@@ -76,7 +78,7 @@
 		<<set $edenmap.edenarrayList to ["Eden Cabin","Clearing Mushrooms","Eden Porch","Eden Plots","Clearing Weeding","Clearing Spring","Clearing Debris","Eden Clearing"]>>
 	<</if>>
 
-	<<if $options.images is 1 >>
+	<<if $options.images is 1 and !$options.mapLegacy>>
 		<<set _EdenBoxLocation to [
 			{ x: 89,		y: 56}, /*小屋门口*/
 	        { x: 26,		y: 34}, /*椅子*/
@@ -135,7 +137,11 @@
             <img class="edenmapitem"  src="img/misc/edenspring3.gif" />
     <</switch>>
     <<if Time.hour gte 19 || Time.hour lt 8 >>
+        <<if Weather.bloodMoon>>
+        <img class="edenmapnight"  src="img/misc/edenmapbloodmoon.png" />
+        <<else>>
         <img class="edenmapnight"  src="img/misc/edenmapnight.png" />
+        <</if>>
         <script>
             var edenmapnight = document.getElementsByClassName("edenmapnight");
             for (var i = 0; i < edenmapnight.length; i++) {
@@ -176,12 +182,14 @@
 		</div>
 		</div>
 	<</if>>
-	<<if $options.images is 1>>
+	<<if $options.images is 1 and !$options.mapLegacy>>
 	<script>
 
         window.modImgLoaderHooker.addDynamicImageTagReplacePassage(V.passage);
 
-		var night_img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAACACAYAAADktbcKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABoUlEQVR4nO3UMQHAIADAsDGdvPjAOcjgaKKgV8dc+3xA0v86AHjHACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDsAqyLA0D3g78UAAAAAElFTkSuQmCC";
+		var night_img;
+    if(Weather.bloodMoon){night_img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAACACAYAAADktbcKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABoklEQVR4nO3UMQHAIADAsDETnGjDvwiQwdFEQa+Oveb5gKT/dQDwjgFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFAmAFA2AVFYQKW/AJQTwAAAABJRU5ErkJggg==";}
+    else{night_img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAACACAYAAADktbcKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABoUlEQVR4nO3UMQHAIADAsDGdvPjAOcjgaKKgV8dc+3xA0v86AHjHACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDMACDsAqyLA0D3g78UAAAAAElFTkSuQmCC";}
 
 		var eden_div = document.getElementsByClassName("divedenmap");
 		var lil_pc_div_img = document.createElement("div");
@@ -318,6 +326,18 @@ else if (V.passage == "Eden Porch") {
 else if (V.passage == "Eden Plots") {
     setPCandEdenPosition(null, 228, 80, null, null, null);
 }
+else if (V.passage == "Fishing" || V.passage == "Fishing Bitten"){
+    pc_width = 41;
+    lil_pc_div_img.style.height = "53px";
+    lil_pc_div_img.style.width = "41px";
+    lil_pc_div_img.style.zIndex = "4";
+    if (V.options.fishingrod_held){
+      setPCandEdenPosition("fish_" + V.options.fishingrod_held,10,28,null,null,null);
+    }
+    else{
+      setPCandEdenPosition("fish_Wood_Fishing_Pole",10,28,null,null,null);
+    }
+  }
 
 lil_eden.setAttribute("src", "img/misc/lil_eden/" + eden_direction + "_" + V.NPCName[6].pronoun + ".gif");
 lil_eden.setAttribute("class", "pc_img_body");

@@ -1,9 +1,11 @@
+var outDoorPassages = ['Eden Clearing','Clearing Weeding','Clearing Eden Actions','Eden Porch','Clearing Spring','Eden Plots','Clearing Fondle','Eden Lunch',"Eden Shoot","Eden Shoot First Focus","Eden Shoot Focus"];
+
 simpleFrameworks.addto('iModFooter', {
-    passage: ['Eden Clearing','Clearing Weeding','Clearing Eden Actions','Eden Porch','Clearing Spring','Eden Plots','Clearing Fondle','Eden Lunch',"Eden Shoot","Eden Shoot First Focus","Eden Shoot Focus"],
+    passage: outDoorPassages,
     widget: 'Eden_Cabin_Map',
 });
 simpleFrameworks.addto('iModHeader', {
-    passage: ['Eden Clearing','Clearing Weeding','Clearing Eden Actions','Eden Porch','Clearing Spring','Eden Plots','Clearing Fondle','Eden Lunch',"Eden Shoot","Eden Shoot First Focus","Eden Shoot Focus"],
+    passage: outDoorPassages,
     widget: 'Eden_Map_Actions',
 });
 simpleFrameworks.addto('iModFooter', {
