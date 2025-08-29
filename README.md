@@ -3,6 +3,8 @@
 
 交流群：390135062，可以在群内报告bug或者讨论mod内容
 
+<b>如果你有想写进游戏的伊甸相关剧情，可以联系我！</b>
+
 ## 添加内容
 
 添加了一些拓展剧情、两张地图、若干pc与伊甸互动的动画（以及奇怪的收音机）。
@@ -14,11 +16,11 @@
 
 ### 使用方法
 
-<b>请先安装前置模组[**简易框架**](https://github.com/emicoto/DOLMods/)！！！
+<b>请先安装前置模组[**简易框架**](https://github.com/emicoto/SCMLSimpleFramework/issues/4)！！！
 
-请先安装前置模组[**简易框架**](https://github.com/emicoto/DOLMods/)！！！
+请先安装前置模组[**简易框架**](https://github.com/emicoto/SCMLSimpleFramework/issues/4)！！！
 
-请先安装前置模组[**简易框架**](https://github.com/emicoto/DOLMods/)！！！</b>
+请先安装前置模组[**简易框架**](https://github.com/emicoto/SCMLSimpleFramework/issues/4)！！！</b>
 
 <br>
 安装顺序为：
@@ -29,7 +31,7 @@
 <br>
 注意：本人初学js，安装这个模组可能会导致一些bug，请在issues内反馈给我。
 
-可能不兼容老版本，5.1.3或5.2.8经过测试可以正常游玩，已知美发沙龙和自定义发色mod可以正常兼容。
+可能不兼容老版本，5.4.9经过测试可以正常游玩，已知美发沙龙和自定义发色mod可以正常兼容。
 
 * <b>如果有人想要下载，请将这个仓库的链接发送给他。</b>
   * 即不要二次上传未经你修改过的mod版本<br>
@@ -68,7 +70,7 @@
    * 还有正在游玩这款模组的你！
    * 你们是最好的！^^
 
-~~支持喵~大家快来支持 Imperial Circus Dead Decadence 乐队喵！~~
+~~支持喵~大家快来支持 由理生社 乐队喵！~~
   
 ### 目前已知bug
 
